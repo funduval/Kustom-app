@@ -36,20 +36,19 @@ function showData(data, tabletop) {
       }
     };
 
-    //console.log(customerObject);
+    var postObject = { ...customerObject };
+    console.log();
     //***********************************************************************
     //*******The following console.log prints the phones & emails arrays, but when I console.log just the customerObject (commented out, above), the arrays print as anonymous objects again*******//
     //***********************************************************************
 
-    console.log(customerObject.attributes.phones); //this one prints: values-as-objects-in-the-array were pushed successfully
+    //this one prints: values-as-objects-in-the-array were pushed successfully
 
-    // postCustomers(customerObject, auth);
+    // postCustomers(customerObject);
   });
 }
 
-function postCustomers(customerObject, auth) {
-  console.log(customerObject);
-
+function postCustomers(customerObject) {
   var options = {
     method: 'POST',
     url: 'https://api.kustomerapp.com/v1/customers',
@@ -59,6 +58,8 @@ function postCustomers(customerObject, auth) {
     },
     body: customerObject
   };
+
+  console.log(options.body);
 
   /*request(options, function(error, response, returnedBody) {
     if (error) throw new Error(error);
