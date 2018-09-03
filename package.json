@@ -1,0 +1,25 @@
+{
+  "name": "Kustom-app",
+  "version": "1.0.0",
+  "description": "migrating data from customer to Kustomer",
+  "main": "tabletop.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funduval/Kustom-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/funduval/Kustom-app/issues"
+  },
+  "homepage": "https://github.com/funduval/Kustom-app#readme",
+  "dependencies": {
+    "request": "^2.88.0",
+    "tabletop": "^1.5.2"
+  }
+}
