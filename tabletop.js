@@ -35,7 +35,12 @@ function showData(data, tabletop) {
         lastName: customer.lastName
       }
     };
-    console.log(customerObject);
+    //console.log(customerObject);
+    //***********************************************************************
+    //*******The following console.log prints the phones & emails arrays, but when I console.log just the customerObject (commented out, above), the arrays print as anonymous objects again*******//
+    //***********************************************************************
+
+    console.log(customerObject.phones);
     // postCustomers(customerObject, auth);
   });
 }
