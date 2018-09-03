@@ -81,14 +81,7 @@ function showData(data, tabletop) {
 
 		var postBody = {
 			type: customer.customerType,
-			attributes: {
-				name: customer.firstName + ' ' + customer.lastName,
-				displayName: customer.firstName + ' ' + customer.lastName,
-				emails: [item1],
-				phones: [itemA, itemB],
-				firstName: customer.firstName,
-				lastName: customer.lastName
-			}
+			attributes: attributes
 		};
 
 		console.log(postBody.attributes);
