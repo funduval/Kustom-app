@@ -16,7 +16,7 @@ function showData(data, tabletop) {
 	const customers = data;
 
 	customers.forEach(function(customer, i) {
-		//
+		//*****************SOME DESTRUCTURING BELOW*****************//
 
 		function makeArrayOfEmails() {
 			return {
@@ -31,7 +31,8 @@ function showData(data, tabletop) {
 							{ phone: customer.homePhone, type: 'home' }
 						],
 						firstName: customer.firstName,
-						lastName: customer.lastName
+						lastName: customer.lastName,
+						birthday: customer.birthday
 					}
 				}
 			};
@@ -50,7 +51,8 @@ function showData(data, tabletop) {
 							{ phone: customer.homePhone, type: 'home' }
 						],
 						firstName: customer.firstName,
-						lastName: customer.lastName
+						lastName: customer.lastName,
+						birthday: customer.birthday
 					}
 				}
 			};
@@ -72,43 +74,42 @@ function showData(data, tabletop) {
 							{ phone: customer.homePhone, type: 'home' }
 						],
 						firstName: customer.firstName,
-						lastName: customer.lastName
+						lastName: customer.lastName,
+						birthday: customer.birthday
 					}
 				}
 			};
 		}
-		const { data: { attributes } } = extractNested();
+		const { data } = extractNested();
+		//****************done Destructuring***************************//
 
-		var postBody = {
-			type: customer.customerType,
-			attributes: attributes
-		};
+		const postBody = data;
 
-		console.log(postBody.attributes);
+		console.log(postBody);
 
-		//postCustomers(postBody, item1, itemA, itemB);
+		//postCustomers(postBody);
+
+		function postCustomers(postBody) {
+			var body = postBody;
+			var auth =
+				'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViOGFjZDc1YzY0NTRjMDAxNDgzMTcyNCIsInVzZXIiOiI1YjhhY2Q3NTUzYTUzZWE1NmUxMmMwYjEiLCJvcmciOiI1Yjg3MWY2YTE3ZjkwNzg2NTEyYTFkMzEiLCJvcmdOYW1lIjoienp6LWZ1bmRhIiwidXNlclR5cGUiOiJtYWNoaW5lIiwicm9sZXMiOlsib3JnLmFkbWluIiwib3JnLnVzZXIiXSwiYXVkIjoidXJuOmNvbnN1bWVyIiwiaXNzIjoidXJuOmFwaSIsInN1YiI6IjViOGFjZDc1NTNhNTNlYTU2ZTEyYzBiMSJ9.jIXo8ha3MyLsBGJmh3dMYRIkQhPxznWNjVuUEQD50wM';
+
+			var options = {
+				method: 'POST',
+				url: 'https://api.kustomerapp.com/v1/customers',
+				headers: {
+					'content-type': 'application/json',
+					authorization: auth
+				},
+				body: body
+			};
+			console.log(options.body);
+			/*request(options, function(error, response, returnedBody) {
+				if (error) throw new Error(error);
+				console.log(returnedBody);
+			});*/
+		}
 	});
-}
-
-function postCustomers(postBody, item1, itemA, itemB) {
-	console.log(itemA);
-	var auth =
-		'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViOGFjZDc1YzY0NTRjMDAxNDgzMTcyNCIsInVzZXIiOiI1YjhhY2Q3NTUzYTUzZWE1NmUxMmMwYjEiLCJvcmciOiI1Yjg3MWY2YTE3ZjkwNzg2NTEyYTFkMzEiLCJvcmdOYW1lIjoienp6LWZ1bmRhIiwidXNlclR5cGUiOiJtYWNoaW5lIiwicm9sZXMiOlsib3JnLmFkbWluIiwib3JnLnVzZXIiXSwiYXVkIjoidXJuOmNvbnN1bWVyIiwiaXNzIjoidXJuOmFwaSIsInN1YiI6IjViOGFjZDc1NTNhNTNlYTU2ZTEyYzBiMSJ9.jIXo8ha3MyLsBGJmh3dMYRIkQhPxznWNjVuUEQD50wM';
-
-	var options = {
-		method: 'POST',
-		url: 'https://api.kustomerapp.com/v1/customers',
-		headers: {
-			'content-type': 'application/json',
-			authorization: auth
-		},
-		body: postBody
-	};
-
-	/*request(options, function(error, response, returnedBody) {
-    if (error) throw new Error(error);
-    console.log(returnedBody);
-  });*/
 }
 
 init();
